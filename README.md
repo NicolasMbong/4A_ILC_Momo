@@ -1,8 +1,10 @@
 # Momo
 
-#groupe 
+## groupe 
 M'BONG Nicolas
 DESCHAMPS-FRILLEY Benjamin
 
-#Language
-Nous utiliserons python
+## Language
+python
+
+[Status actions](https://github.com/Naereen/badges)
