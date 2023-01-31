@@ -30,7 +30,6 @@ class Personne:
 
 Personnes=[]
 listTransaction=[]
-increment= 4
 
 @app.route("/")
 def afficherClient():
@@ -44,7 +43,6 @@ def addCompte(Nom, solde):
     for i in range(len(Personnes)):
         if (Personnes[i].getNom()==Nom):
             return "Un client avec les meme nom est deja dans la banque"
-
     client=Personne(Nom,solde)
     Personnes.append(client)
     print("le client a été ajouté a la banque")
@@ -61,8 +59,8 @@ def checktransaction(P1,transac):
 def addTransaction(id1,id2,transfert):
     trans=[id1,id2,transfert]
     if (checktransaction(Personnes[id1], transfert) == True) :
-        Personnes[id1].setSolde(transfert)
-        Personnes[id2].setSolde(-transfert)
+        Personnes[id1].setSolde(-transfert)
+        Personnes[id2].setSolde(transfert)
         listTransaction.append(trans)
         return "La transaction d'un montant de:", transfert, "entre ", Personnes[id1].getNom(), " et ", Personnes[id2].getNom(), "à été effectué"
     return Personnes[id1], "ne peut pas transferer", transfert, "car son solde est trop faible"
