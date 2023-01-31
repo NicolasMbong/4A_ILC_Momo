@@ -30,6 +30,7 @@ class Personne:
 
 Personnes=[]
 listTransaction=[]
+increment= 4
 
 @app.route("/")
 def afficherClient():
