@@ -1,7 +1,9 @@
 name: Docker push GCR
 
 on:
-  workflow_dispatch:
+  push:
+    tags:        
+      - v*.*.*
 
 jobs:
   docker:
@@ -28,8 +30,8 @@ jobs:
         uses: docker/build-push-action@v3.2.0
         with:
           # Emplacement du Dockerfile
-          file: 4A_ILC_Momo/Dockerfile
-          tags: gcr.io/esirem/4A_ilc/MBONG-Nicolas_DESCHAMPS-Benjamin/4A_ILC_Momo:${{ github.ref_name }}
+          file: Dockerfile
+          tags: gcr.io/esirem/4A_ilc/MBONG_DESCHAMPS/4A_ilc_Momo:${{ github.ref_name }}
           # Emplacement des fichiers 
-          context: 4A_ILC_Momo
+          context: "."
           push: true
