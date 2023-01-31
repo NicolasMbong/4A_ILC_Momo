@@ -1,5 +1,7 @@
 from flask import Flask
 import sys
+import csv
+
 
 app= Flask(__name__)
 @app.route("/")
@@ -18,52 +20,61 @@ class Personne:
         def getSolde(self):
                 return self._solde
 
-        def modifSolde(self,montant):
-                self._solde-=montant
+        def setSolde(self,montant):
+                self._solde= self._solde + montant
                 return
 
-bidule=Personne("Max",10)
+
+def addCompte(liste, Nom, solde):
+    for i in range(len(liste)):
+        if (liste[i].getNom()==Nom):
+            print("Un client avec les meme nom est deja dans la banque")
+    client=Personne(Nom,solde)
+    liste.append(client)
+    print("le client a été ajouté a la banque")
+                        
+                    
+def checktransaction(P1,transac):
+    if (P1.getSolde() < transac) :
+        return False
+    return True
+
+
+def addTransaction(P1,P2,t,transfert):        
+    T=[P1,P2,t,transfert]
+    if (checktransaction(P1, transfert) == True) : 
+        print("La transaction d'un montant de:", transfert, "entre ", P1.getNom(), " et ", P2.getNom(), "à été effectué")
+        P1.setSolde(transfert)
+        P2.setSolde(-transfert)
+    else  :
+        print(P1, "ne peut pas transferer", transfert, "car son solde est trop faible")
+
+
+def afficherTransactions(listClient):
+    for i in range(len(listClient)):
+        print(listClient[i])
+
+
+def trie(L):
+    return sorted(L, key=lambda L: L[2])
+
+
+def afficherClient(M):
+    for i in range(len(M)):
+        print(M[i].getNom())
+    return
+
+
 Personnes=[]
-Personnes.append(bidule)
 
-def AddCompte(Nom,solde):
-        for i in range(len(Personnes)):
-                if (Personnes[i].getNom()==Nom):
-                        print("marche pô")
-                        return
-                else:
+addCompte(Personnes,"Max", 10)
+addCompte(Personnes,"Benjamin",1000)
+addCompte(Personnes,"Baptiste",0)
+afficherClient(Personnes)
 
-                        truc=Personne(Nom,solde)
-                        Personnes.append(truc)
-                        return
+addTransaction(Personnes[1],Personnes[0],8,100)
 
 
-def AddTransaction(P1,P2,t,s):
-        T=[P1,P2,t,s]
-        print("La transaction d'un montant de:", s, "entre ", P1.getNom(), " et ", P2.getNom(), "à été effectué")
-        Personnes.append(P1)
-
-        return ;
-
-def AfficherTransactions(T):
-        for i in range(len(T)):
-                print(T[i])
-        return
-
-def Trie(L):
-        return sorted(L, key=lambda L: L[2])
-
-def AfficherListe(M):
-        for i in range(len(M)-1):
-                print(M[i].getNom())
-        return
-
-
-AddCompte("Benjamin",1000)
-AddCompte("Baptiste",0)
-AddTransaction(Personnes[0],Personnes[1],8,100)
-
-AfficherListe(Personnes)
 
 if __name__ == '__main__':
 	if len(sys.argv) > 1:
