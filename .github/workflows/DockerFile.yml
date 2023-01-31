@@ -4,8 +4,9 @@ on:
 jobs:
   build:
   
-  runs-on: ubuntu-latest
+    runs-on: ubuntu-latest
   
-  steps:
-    -name: Build DockerFile image
-      run: docker build . --file DockerFile --tag flask_server
+    steps:
+      - uses: actions/checkout@v3
+      - name: Build DockerFile image
+        run: docker build . --file Dockerfile --tag flask_server
