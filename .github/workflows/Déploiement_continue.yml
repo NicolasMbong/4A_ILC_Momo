@@ -2,6 +2,8 @@ name: Docker push GCR
 
 on:
   push:
+    branches:
+          - 'releases/**'
     tags:        
       - v*.*.*
 
