@@ -8,5 +8,5 @@ jobs:
   
     steps:
       - uses: actions/checkout@v3
-      - name: Build DockerFile image
+      - name: Build Dockerfile image
         run: docker build . --file Dockerfile --tag flask_server
