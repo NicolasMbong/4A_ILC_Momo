@@ -28,8 +28,8 @@ jobs:
         uses: docker/build-push-action@v3.2.0
         with:
           # Emplacement du Dockerfile
-          file: tds/correction_td3-4/Dockerfile
-          tags: gcr.io/esirem/4A_ilc/MBONG-Nicolas_DESCHAMPS-Benjamin/M:${{ github.ref_name }}
+          file: 4A_ILC_Momo/Dockerfile
+          tags: gcr.io/esirem/4A_ilc/MBONG-Nicolas_DESCHAMPS-Benjamin/4A_ILC_Momo:${{ github.ref_name }}
           # Emplacement des fichiers 
-          context: tds/correction_td3-4
+          context: 4A_ILC_Momo
           push: true
