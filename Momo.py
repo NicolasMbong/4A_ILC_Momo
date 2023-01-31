@@ -69,13 +69,20 @@ def addTransaction(id1,id2,transfert):
 
 @app.route("/afficherTransaction/")
 def afficherTransaction():
-    for i in range(len(listTransaction)):
-        print(listTransaction[i])
+    List = trie(listTransaction)	
+    for i in range(len(List)):
+        print(List[i])
 
 
 def trie(L):
     return sorted(L, key=lambda L: L[2])
 
+@app.route("/afficherTransactionPersonne/<int:id>")
+def afficherTransactionPersonne(id)
+	List = trie(listTransaction)
+    	for i in range(len(List)):
+        if(List[0] == id) || (List[1] == id)	
+		print(List[i])
 
 addCompte("Max", 10)
 addCompte("Benjamin",1000)
