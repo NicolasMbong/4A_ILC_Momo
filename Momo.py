@@ -94,6 +94,12 @@ def csvRead(fichier_csv):
     data = list(reader) #stock les lignes du fichier dans une liste 
     return data
 
+def csvWrite(fichier_csv):
+    fichier = open(fichier_csv, "w") #ouvre le fichier fournis en mode lecture
+     write = csv.write(fichier, delimiter=";") #créer un bojet de lecture avec ; comme délimiteur de colonne 
+    data = list(reader) #stock les lignes du fichier dans une liste 
+    return data
+
 	
 addCompte("Max", 10)
 addCompte("Benjamin",1000)
