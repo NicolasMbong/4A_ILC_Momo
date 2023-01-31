@@ -88,7 +88,12 @@ def printSold(id):
 		if (Personnes[i].getId()==id):
 			return ("Le solde du compte est: ", Personnes[i].getsolde(),"euros")
 	
-	
+def csvRead(fichier_csv):
+    fichier= open(fichier_csv, "r") #ouvre le fichier fournis en mode lecture
+    reader = csv.reader(fichier, delimiter=";") #créer un bojet de lecture avec ; comme délimiteur de colonne 
+    data = list(reader) #stock les lignes du fichier dans une liste 
+    return data
+
 	
 addCompte("Max", 10)
 addCompte("Benjamin",1000)
