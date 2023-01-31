@@ -33,7 +33,7 @@ jobs:
         with:
           # Emplacement du Dockerfile
           file: Dockerfile
-          tags: gcr.io/esirem/4A_ilc/MBONG_DESCHAMPS/4A_ilc_Momo:${{ github.ref_name }}
+          tags: gcr.io/esirem/4a_ilc/mbong_deschamps/4a_ilc_momo:${{ github.ref_name }}
           # Emplacement des fichiers 
           context: "."
           push: true
