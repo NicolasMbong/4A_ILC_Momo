@@ -78,23 +78,31 @@ def trie(L):
     return sorted(L, key=lambda L: L[2])
 
 @app.route("/afficherTransactionPersonne/<int:id>")
-def afficherTransactionPersonne(id)
+def afficherTransactionPersonne(id):
 	List = trie(listTransaction)
     	for i in range(len(List)):
-        if(List[0] == id) || (List[1] == id)	
+        if(List[0] == id) || (List[1] == id):	
 		print(List[i])
 
+@app.route("/printSolde/<int:id>")		
+def printSold(id):
+	for i in range(len(Personnes):
+		if (Personnes[i].getId()==id):
+			return ("Le solde du compte est: ", Personnes[i].getsolde(),"euros")
+	
+	
+	
 addCompte("Max", 10)
 addCompte("Benjamin",1000)
 addCompte("Baptiste",0)
 
 
-afficherClient()
+#afficherClient()
 
 
 addTransaction(1,0,100)
 addTransaction(1,2,10)
-afficherTransaction()
+#afficherTransaction()
 
 if __name__ == '__main__':
 	if len(sys.argv) > 1:
