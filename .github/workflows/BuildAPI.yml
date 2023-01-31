@@ -1,4 +1,4 @@
-name: Build and Deploy API
+name: Build API
 
 on:
   push:
@@ -10,15 +10,15 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
+    - name: a
       uses: actions/checkout@v3
 
-    - name: Set up Python
+    - name: b
       uses: actions/setup-python@v4
       with:
         python-version: 3.8
         
-    - name: install FLask
+    - name: c
       run: pip install flask
 
  
