@@ -65,7 +65,7 @@ def verificationtransaction(P1, transac):
 @app.route("/addTransaction/<int:id1>/<int:id2>/<float:transfert>")
 def ajoutTransaction(id1, id2, transfert):
     t = datetime.datetime.now()
-    array = [id1, id2, transfert]
+    array = [id1, id2, transfert, t]
     h = hachage(array)
     trans = [id1, id2, t, transfert, h]
     if verificationtransaction(Personnes[id1], transfert):
