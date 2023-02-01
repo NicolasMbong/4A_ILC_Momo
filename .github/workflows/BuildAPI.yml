@@ -10,15 +10,15 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: a
+    - name: CHECKOUT CODE
       uses: actions/checkout@v3
 
-    - name: b
+    - name: SET UP PYTHON
       uses: actions/setup-python@v4
       with:
         python-version: 3.8
         
-    - name: c
+    - name: INSTALL FLASK
       run: pip install flask
 
  
