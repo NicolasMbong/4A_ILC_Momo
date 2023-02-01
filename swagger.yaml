@@ -1,0 +1,41 @@
+swagger: '2.0'
+info:
+  version: '1.0.0'
+  title: Momo
+  description: API pour enregistrer des transactions entre les client d'une banque
+
+paths:
+  /afficherClient/:
+    get:
+      summary: Affichage de la liste des clients
+      200:
+  /addCompte/{nom}/{solde}:
+    get:
+      summary: ajouter un compte client
+      parameters:
+        - id: person
+        - solde: float
+      200:
+  /addTransaction/{id1}/{id2}/{transfet}:
+    post:
+      summary: ajouter une transactions entre 2 clients
+      200:
+  /afficherTransaction/:
+    get:
+      summary: Afficher une liste des transactions dans un ordre chronologique
+      responses:
+        200:
+  /afficherTransactionPersonne/{id}:
+    get:
+      summary: Afficher une liste des transactions liées à une personne en ordre chronologique
+      parameters:
+        - id: int
+      responses:
+        200:
+  /printSolde/{id}:
+      get:
+      summary: Afficher une liste des transactions liées à une personne en ordre chronologique
+      parameters:
+        - id: int
+      responses:
+        200:
