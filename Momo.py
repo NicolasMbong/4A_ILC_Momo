@@ -45,7 +45,7 @@ def afficherClient():
         return "Methode invalide"
 
 
-@app.route("/addCompte/<string:nom>/<float:solde>")
+@app.route("/addCompte/<string:nom>/<float:solde>", methods=['POST'])
 def ajoutCompte(Nom, solde):
     for i in range(len(Personnes)):
         if Personnes[i].getNom() == Nom:
@@ -62,7 +62,7 @@ def verificationtransaction(P1, transac):
     return True
 
 
-@app.route("/addTransaction/<int:id1>/<int:id2>/<float:transfert>")
+@app.route("/addTransaction/<int:id1>/<int:id2>/<float:transfert>", methods=['POST'])
 def ajoutTransaction(id1, id2, transfert):
     t = datetime.datetime.now()
     array = [id1, id2, transfert, t]
@@ -77,7 +77,7 @@ def ajoutTransaction(id1, id2, transfert):
     return Personnes[id1], "ne peut pas transferer", transfert, "car son solde est trop faible"
 
 
-@app.route("/afficherTransaction/")
+@app.route("/afficherTransaction", methods=['GET'])
 def afficherTransaction():
     List = trie(listTransaction)
     for i in range(len(List)):
@@ -88,7 +88,7 @@ def trie(L):
     return sorted(L, key=lambda L: L[2])
 
 
-@app.route("/afficherTransactionPersonne/<int:id>")
+@app.route("/afficherTransactionPersonne/<int:id>", methods=['GET'])
 def afficherTransactionPersonne(id):
     list = trie(listTransaction)
     for i in range(len(list)):
@@ -96,20 +96,20 @@ def afficherTransactionPersonne(id):
             print(list[i])
 
 
-@app.route("/printSolde/<int:id>")
+@app.route("/printSolde/<int:id>",methods=['GET'])
 def afficherSolde(id):
     for i in range(len(Personnes)):
         if Personnes[i].getId() == id:
             return "Le solde du compte est: ", Personnes[i].getsolde(), "euros"
 
-
+@app.route("/lectureCSV/<str:fichier_csv>", methods=['GET','POST'])
 def lectureCSV(fichier_csv):
     fichier = open(fichier_csv, "r")  # ouvre le fichier fournis en mode lecture
     reader = csv.reader(fichier, delimiter=";")  # créer un bojet de lecture avec ; comme délimiteur de colonne
     data = list(reader)  # stock les lignes du fichier dans une liste
     return data
 
-
+@app.route("/lectureCSV/<str:fichier_csv>", methods=['GET','POST'])
 def ecrireCSV(fichier_csv):
     fichier = open(fichier_csv, "w")  # ouvre le fichier fournis en mode lecture
     write = csv.write(fichier, delimiter=";")  # créer un bojet de lecture avec ; comme délimiteur de colonne
