@@ -147,6 +147,8 @@ def ecrireCSV(fichier_csv):
 
 
 # fonction de hachage de transaction grâce à sha256
+# nous avons choisi la fonction sha256 car elle offre un haut niveau de sécurité 
+# de plus elle est déjà utilisé dans de nombreux systèmes afin de sécuriser les informations comme par exemple Bitcoin
 def hachage(transaction):
     sha256 = hashlib.sha256()
     h = str(transaction)
