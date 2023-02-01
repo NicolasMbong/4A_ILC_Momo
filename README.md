@@ -2,10 +2,12 @@
 
 ## groupe 
 M'BONG Nicolas
+
 DESCHAMPS-FRILLEY Benjamin
 
 ## Sujet du projet
 Nous avons choisi de réaliser le sujet guidé. 
+
 Car nous possèdions très peut de connaissance sur les différentes démarche d'un projet CI/CD.
 
 ## Language
