@@ -31,15 +31,18 @@ class Personne:
 Personnes=[]
 listTransaction=[]
 
-@app.route("/")
+@app.route("/", methods=['GET'])
 def afficherClient():
-    affiche = "<h3>Liste de Personne :</h3>\n"
-    for personne in range(len(Personnes)):
-       	affiche += "<p>" + personne.toString() + "</p>\n"
-    return affiche
+    if request.method == 'GET':
+        affiche = "<h3>Liste de Personne :</h3>\n"
+        for personne in range(len(Personnes)):
+           	affiche += "<p>" + personne.toString() + "</p>\n"
+        return affiche
+    else:
+        return "Methode invalide"
 
 @app.route("/addCompte/<string:nom>/<float:solde>")
-def addCompte(Nom, solde):
+def ajoutCompte(Nom, solde):
     for i in range(len(Personnes)):
         if (Personnes[i].getNom()==Nom):
             return "Un client avec les meme nom est deja dans la banque"
@@ -49,14 +52,14 @@ def addCompte(Nom, solde):
     return client
 
 
-def checktransaction(P1,transac):
+def verificationtransaction(P1,transac):
     if (P1.getSolde() < transac) :
         return False
     return True
 
 
 @app.route("/addTransaction/<int:id1>/<int:id2>/<float:transfert>")
-def addTransaction(id1,id2,transfert):
+def ajoutTransaction(id1,id2,transfert):
     trans=[id1,id2,transfert]
     if (checktransaction(Personnes[id1], transfert) == True) :
         Personnes[id1].setSolde(-transfert)
@@ -77,40 +80,40 @@ def trie(L):
 
 @app.route("/afficherTransactionPersonne/<int:id>")
 def afficherTransactionPersonne(id):
-	List = trie(listTransaction)
-    	for i in range(len(List)):
-        if(List[0] == id) || (List[1] == id):	
-		print(List[i])
+    list = trie(listTransaction)
+    for i in range(len(list)):
+        if(list[0].getId == id || list[1].getId == id):	
+            print(list[i])
 
 @app.route("/printSolde/<int:id>")		
-def printSold(id):
+def afficherSolde(id):
 	for i in range(len(Personnes):
 		if (Personnes[i].getId()==id):
 			return ("Le solde du compte est: ", Personnes[i].getsolde(),"euros")
 	
-def csvRead(fichier_csv):
+def lectureCSV(fichier_csv):
     fichier= open(fichier_csv, "r") #ouvre le fichier fournis en mode lecture
     reader = csv.reader(fichier, delimiter=";") #créer un bojet de lecture avec ; comme délimiteur de colonne 
     data = list(reader) #stock les lignes du fichier dans une liste 
     return data
 
-def csvWrite(fichier_csv):
+def ecrireCSV(fichier_csv):
     fichier = open(fichier_csv, "w") #ouvre le fichier fournis en mode lecture
      write = csv.write(fichier, delimiter=";") #créer un bojet de lecture avec ; comme délimiteur de colonne 
     data = list(reader) #stock les lignes du fichier dans une liste 
     return data
 
 	
-addCompte("Max", 10)
-addCompte("Benjamin",1000)
-addCompte("Baptiste",0)
+ajoutCompte("Max", 10)
+ajoutCompte("Benjamin",1000)
+ajoutCompte("Baptiste",0)
 
 
 #afficherClient()
 
 
-addTransaction(1,0,100)
-addTransaction(1,2,10)
+ajoutTransaction(1,0,100)
+ajoutTransaction(1,2,10)
 #afficherTransaction()
 
 if __name__ == '__main__':
